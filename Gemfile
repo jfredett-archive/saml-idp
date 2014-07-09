@@ -9,6 +9,7 @@ gem 'ruby-saml-idp'
 gem 'unicorn'
 gem 'execjs'
 gem 'therubyracer'
+gem 'sqlite3'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
