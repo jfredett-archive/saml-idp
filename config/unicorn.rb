@@ -20,9 +20,9 @@ before_fork do |server, worker|
 
   # the following is highly recomended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
-  if defined?(ActiveRecord::Base)
-    ActiveRecord::Base.connection.disconnect!
-  end
+  #if defined?(ActiveRecord::Base)
+    #ActiveRecord::Base.connection.disconnect!
+  #end
 
   if File.exists?(old_pid) && server.pid != old_pid
     begin
@@ -34,7 +34,7 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
+  #defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
   child_pid = server.config[:pid].sub('.pid', ".#{worker.nr}.pid")
   system("echo #{Process.pid} > #{child_pid}")
 end
